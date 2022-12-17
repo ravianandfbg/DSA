@@ -8,27 +8,50 @@
 // Space : O(N)
 
 // HashSet (GFG)
-import java.util.*;
+// import java.util.*;
 
-class Main{
-      //HashSet
-    public static void Pair(int[] arr , int sum){
-        HashSet<Integer> hash = new HashSet<>();
-        for(int i = 0 ; i < arr.length ; i++){
-            int key = sum - arr[i];
+// class Main{
+//       //HashSet
+//     public static void Pair(int[] arr , int sum){
+//         HashSet<Integer> hash = new HashSet<>();
+//         for(int i = 0 ; i < arr.length ; i++){
+//             int key = sum - arr[i];
             
-            if(hash.contains(key)){
-                System.out.println("Yes");
-                return;
-            }
-            hash.add(arr[i]);
-        }
-        System.out.println("No");
-    }
+//             if(hash.contains(key)){
+//                 System.out.println("Yes");
+//                 return;
+//             }
+//             hash.add(arr[i]);
+//         }
+//         System.out.println("No");
+//     }
     
-    public static void main (String[] args) {
-        int[] arr = {1, 4, 45, 6, 10, 8};
-        int n = 16;
-        Pair(arr , n);
-    }
-}
+//     public static void main (String[] args) {
+//         int[] arr = {1, 4, 45, 6, 10, 8};
+//         int n = 16;
+//         Pair(arr , n);
+//     }
+// }
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// HashMap
+class Solution {
+      public int[] twoSum(int[] nums, int target) {
+          int[] res = new int[2];
+          HashMap<Integer , Integer> hm = new HashMap<>();
+          
+          for(int i = 0 ; i < nums.length ; i++){
+              int sum = target - nums[i];
+              
+              if(hm.containsKey(sum)){
+                  res[0] = hm.get(sum);
+                  res[1] = i;
+                  return res;
+              }
+              
+              hm.put(nums[i] , i);
+          }
+          
+          return res;
+      }
+  }
