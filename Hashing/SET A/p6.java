@@ -14,6 +14,9 @@
 // Input: k = 3, arr[] = {1, 2, 3, 4, 4}
 // Output: true
 
+// Time : O(N)
+// Space : O(N)
+
 import java.util.*;
 
 class Main{
