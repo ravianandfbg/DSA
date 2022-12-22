@@ -11,3 +11,25 @@
 // Time : O(N)
 // Space: O(N)
 
+class Solution {
+      public int subarraySum(int[] nums, int k) {
+          HashMap<Integer,Integer> map = new HashMap<>();
+          map.put(0 , 1);
+          
+          int ps = 0; // ps : prefix sum
+          int count = 0;
+          
+          for(int i = 0 ; i < nums.length ; i++){
+              ps += nums[i];
+              
+              if(map.containsKey(ps - k) == true){
+                  int oFreq = map.get(ps - k); // oFreq : old frequency
+                  count += oFreq;
+              }
+              int nFreq = map.getOrDefault(ps , 0 ) + 1; // nFreq : new Frequency
+              map.put(ps , nFreq);
+          }
+          
+          return count;
+      }
+  }
