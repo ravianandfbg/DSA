@@ -7,3 +7,35 @@
 // Time : O(N)
 // Space : O(N)
 
+import java.util.HashMap;
+
+public class Main {
+  public static int smallestSubarray(int[] arr, int k) {
+    // Store the sum and the index for each prefix sum
+    HashMap<Integer, Integer> prefixSums = new HashMap<>();
+    prefixSums.put(0, -1);
+
+    int minLength = Integer.MAX_VALUE;
+    int sum = 0;
+    for (int i = 0; i < arr.length; i++) {
+      sum += arr[i];
+      int target = sum - k;
+      if (prefixSums.containsKey(target)) {
+        int length = i - prefixSums.get(target);
+        minLength = Math.min(minLength, length);
+      }
+      if (!prefixSums.containsKey(sum)) {
+        prefixSums.put(sum, i);
+      }
+    }
+
+    return minLength == Integer.MAX_VALUE ? -1 : minLength;
+  }
+
+  public static void main(String[] args) {
+    int[] arr = {2, 3, 1, 2, 4, 3};
+    int k = 7;
+    int result = smallestSubarray(arr, k);
+    System.out.println(result);
+  }
+}
