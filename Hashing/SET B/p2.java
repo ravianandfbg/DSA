@@ -33,8 +33,8 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    int[] arr = {2, 3, 1, 2, 4, 3};
-    int k = 7;
+    int[] arr = {2, 4, 6, 10, 2, 1};
+    int k = 12;
     int result = smallestSubarray(arr, k);
     System.out.println(result);
   }
